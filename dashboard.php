@@ -74,7 +74,7 @@
       <a href="#students" class="w3-bar-item w3-button">Students</a>
 			<a href="#homework" class="w3-bar-item w3-button">HomeWork</a>
 			<a href="logout.php" class="w3-bar-item w3-button">Logout</a>
-			<p class="w3-bar-item" style="margin:0"><?php echo $_SESSION['name']; ?></p>
+			<p class="w3-bar-item" style="margin:0;color: #768bcf;font-weight:bold;"><?php echo $_SESSION['name']; ?></p>
     </div>
   </div>
 </div>
@@ -92,7 +92,7 @@
   <!-- About Section -->
   <div class="w3-row w3-padding-64">
     <div class="w3-col m6 w3-padding-large w3-hide-small">
-     <img src="./img/zoro.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+     <img src="./img/murom.png" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
     </div>
 
     <div class="w3-col m6 w3-padding-large">
@@ -163,7 +163,7 @@
     </div>
     
     <div class="w3-col l6 w3-padding-large">
-      <img src="https://picsum.photos/200" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
+      <img src="./img/zoro.jpg" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
     </div>
   </div>
 
@@ -175,7 +175,7 @@
 	</div> -->
 	<div class="w3-row w3-padding-64" id="homework">
     <div class="w3-col m6 w3-padding-large w3-hide-small">
-     <img src="https://picsum.photos/200" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+     <img src="./img/luffy.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
     </div>
 
     <div class="w3-col m6 w3-padding-large">
