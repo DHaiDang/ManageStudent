@@ -28,7 +28,10 @@
 ?>
 
 <html>
-<head><title>Remove User</title></head>
+<head>
+	<title>Remove User</title>
+	<link rel="icon" href="./img/murom.png"/>
+</head>
 	<style>
 	html, body {
 		margin: 1px;

@@ -7,6 +7,7 @@
 <html>
 <title>VCS</title>
 <meta charset="UTF-8">
+<link rel="icon" href="./img/murom.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
@@ -21,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
-    <a href="" class="w3-bar-item w3-button">Viettel Cyber Sencurity</a>
+    <a href="" class="w3-bar-item w3-button"><img src="./img/1.png" class="w3-round w3-image w3-opacity-min" width="150" height="200"></a>
     <!-- Right-sided navbar links. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
 			<a href="login.php" class="w3-bar-item w3-button">Login</a>
@@ -44,13 +45,8 @@ h1, h2, h3, h4, h5, h6 {
 
   <!-- About Section -->
   <div class="w3-row w3-padding-64" id="about">
-    <div class="w3-col m6 w3-padding-large w3-hide-small">
-     <img src="https://picsum.photos/200" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
-    </div>
-
     <div class="w3-col m6 w3-padding-large">
       <h1 class="w3-center">Please login to continue</h1><br>
-      <h5 class="w3-center">ViettelCyberSencurity</h5>
       </div>
   </div>
 </div>

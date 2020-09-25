@@ -4,31 +4,27 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `student` (
   `id` int(10) NOT NULL,
-  `fullname` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `secretpin` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `fullname` varchar(60) NOT NULL,
+  `username` varchar(60) NOT NULL UNIQUE,
+  `password` varchar(60) NOT NULL,
+  `secretpin` int(10) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` varchar(12) NOT NULL,
+  `isAdmin` int(1) DEFAULT 0,
+)
 
---
--- Indexes for dumped tables
---
+CREATE TABLE `homework` (
+  `id`        Int Unsigned Not Null Auto_Increment,
+  `name`      VarChar(255) Not Null Default 'Untitled.txt',
+  `mime`      VarChar(50) Not Null Default 'text/plain',
+  `size`      BigInt Unsigned Not Null Default 0,
+  `data`      MediumBlob Not Null,
+  `created`   DateTime Not Null,
+  PRIMARY KEY (`id`)
+)
 
---
--- Indexes for table `pdo`
---
-ALTER TABLE `pdo`
+ALTER TABLE `student`
   ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `pdo`
---
-ALTER TABLE `pdo`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE `student`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
