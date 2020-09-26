@@ -89,7 +89,7 @@
 <!-- Page content -->
 <div class="w3-content" style="max-width:1100px" id="info">
 
-  <!-- About Section -->
+  <!-- Personal Section -->
   <div class="w3-row w3-padding-64">
     <div class="w3-col m6 w3-padding-large w3-hide-small">
      <img src="./img/5.png" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
@@ -166,10 +166,10 @@
 								echo "<tr><td>". 
 								$row['fullname']."</td><td style='position: relative;'>".
 								"
-								<form  action='send.php' method='post'>
+								<form action='send.php' method='post'>
 									<input hidden type='text' name='id' value=".$row['id'].">
 									<input type='text' name='mess'>
-									<input type='submit' hidden value='Submit'>
+									<input align='center' type='submit' name='send' hidden value='Register'>
 								</form>
 								".
 								"</td></tr>".
@@ -193,11 +193,6 @@
   </div>
 
   <hr>
-
-  <!-- Contact Section -->
-  <!-- <div class="w3-container w3-padding-64" id="homework">
-    <h1>Home work</h1><br>
-	</div> -->
 	<div class="w3-row w3-padding-64" id="homework">
     <div class="w3-col m6 w3-padding-large w3-hide-small">
      <img src="./img/4.png" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
@@ -205,15 +200,138 @@
 
     <div class="w3-col m6 w3-padding-large">
 			<h1 class="w3-center">Home work</h1><br>
+			<?php
+				if(intval($admin) == 1) {
+					if (isset($_SESSION['message']) && $_SESSION['message']){
+						printf('<b style="color:red">%s</b>', $_SESSION['message']);
+						unset($_SESSION['message']);
+					}
+					echo "
+						<form action='upload.php' method='post' enctype='multipart/form-data'>
+							<input type='file' name='uploadedFile' />
+							<button type='submit' name='uploadBtn'>upload</button>
+						</form>
+					";
+				}
+				else {
+					if (isset($_SESSION['message']) && $_SESSION['message']){
+						printf('<b style="color:red">%s</b>', $_SESSION['message']);
+						unset($_SESSION['message']);
+					}
+					echo "
+						<form action='uploadStudent.php' method='post' enctype='multipart/form-data'>
+							<input type='file' name='uploadedFile' />
+							<button type='submit' name='uploadBtn'>upload</button>
+						</form>
+					";
+				}
+			?>
 			<table id="customers">
 				<tr>
-					<th>Title</th>
-					<th>Content</th>
-					<th>Download</th>
+					<th>Homework</th>
 				</tr>
+				<?php
+					$myDirectory = opendir("./uploaded/");
+
+					while($entryName = readdir($myDirectory)) {
+						$dirArray[] = $entryName;
+					}
+					closedir($myDirectory);
+					$indexCount	= count($dirArray);
+					sort($dirArray);
+					echo(substr("$dirArray[$index]", 0, 1));
+					for($index=0; $index < $indexCount; $index++) {
+							if (substr("$dirArray[$index]", 0, 1) != "."){
+							print("<tr><td><a href='down.php?link=".$dirArray[$index]."'>$dirArray[$index]</a></td></tr>");
+							print(filetype($dirArray[$index]));
+						}
+					}
+				?>
 			</table>
     </div>
   </div>
+  <hr>
+	<?php
+		if(intval($admin) == 1) {
+	?>
+		<div class='w3-row w3-padding-64' id='students'>
+			<div class='w3-col l6 w3-padding-large'>
+				<h1 class='w3-center'>Student Homework</h1><br>
+				<table id="customers">
+					<tr>
+						<th>Students</th>
+						<th>Homework</th>
+					</tr>
+					<?php
+						$myDirectory2 = opendir("./uploadStudent/");
+
+						while($entryName2 = readdir($myDirectory2)) {
+							$dirArray2[] = $entryName2;
+						}
+						closedir($myDirectory2);
+						$indexCount2	= count($dirArray2);
+						sort($dirArray2);
+						echo(explode(":", $dirArray2[$index])[0]);
+						for($index=0; $index < $indexCount2; $index++) {
+								if (substr("$dirArray2[$index]", 0, 1) != "."){
+								print("<tr><td>".explode(":", $dirArray2[$index])[0]."</td><td><a href='down.php?link=".$dirArray2[$index]."'>".explode(":", $dirArray2[$index])[1]."</a></td></tr>");
+								print(filetype($dirArray2[$index]));
+							}
+						}
+					?>
+				</table>
+			</div>
+			<div class='w3-col l6 w3-padding-large'>
+				<img src='./img/2.png' class='w3-round w3-image w3-opacity-min' alt='Menu' style='width:100%'>
+			</div>
+		</div>
+	<?php
+		}
+	?>
+	
+	<div class="w3-row w3-padding-64" id="students">
+    <div class="w3-col l6 w3-padding-large">
+		<h1 class="w3-center">Challenge</h1><br>
+		<?php
+			if(intval($admin) == 1) {
+		?>
+			<h2>Make Challenge</h2>
+			<form action='challenge.php' method='post' enctype='multipart/form-data'>
+				<input class ='hint' type='text' name='hint' />
+				<input type='file' name='uploadedFile' />
+				<button type='submit' name='uploadBtn'>upload</button>
+			</form>
+		<?php
+		}
+		?>
+		<table id="customers">
+			<tr>
+				<th>Students</th>
+				<th>Homework</th>
+			</tr>
+			<?php
+				$myDirectory3 = opendir("./challenge/");
+
+				while($entryName3 = readdir($myDirectory3)) {
+					$dirArray3[] = $entryName3;
+				}
+				closedir($myDirectory3);
+				$indexCount3	= count($dirArray3);
+				sort($dirArray3);
+				for($index=0; $index < $indexCount3; $index++) {
+						if (substr("$dirArray3[$index]", 0, 1) != "."){
+						print("<tr><td>".$dirArray3[$index]."</td><td><a href='down.php?link=".$dirArray3[$index]."'>".$dirArray3[$index]."</a></td></tr>");
+						print(filetype($dirArray3[$index]));
+					}
+				}
+			?>
+		</table>
+    </div>
+    <div class="w3-col l6 w3-padding-large">
+      <img src="./img/3.png" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
+    </div>
+  </div>
+
 </div>
 
 </body>

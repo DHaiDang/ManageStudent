@@ -24,11 +24,11 @@
 					$errMsg = "User $username not found.";
 				}
 				else {
-					if($password == $data['password']) {
+					if(md5($password) == $data['password']) {
 						$_SESSION['id'] = $data['id'];
 						$_SESSION['name'] = $data['fullname'];
 						$_SESSION['username'] = $data['username'];
-						$_SESSION['password'] = $data['password'];
+						$_SESSION['password'] = md5($data['password']);
 						$_SESSION['email'] = $data['email'];
 						$_SESSION['phone'] = $data['phone'];
 						$_SESSION['secretpin'] = $data['secretpin'];

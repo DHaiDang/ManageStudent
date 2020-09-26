@@ -29,7 +29,7 @@
 				$stmt->execute(array(
 					':fullname' => $fullname,
 					':username' => $username,
-					':password' => $password,
+					':password' => md5($password),
 					':email' => $email,
 					':phone' => $phone,
 					':secretpin' => $secretpin,
